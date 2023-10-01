@@ -20,6 +20,7 @@ jobs:
     environment: dev
 
     steps:
+      - uses: actions/checkout@v3
       - name: Check the vars
         run: echo ${{ env.MSG }}
 
@@ -54,10 +55,3 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm test
-  deploy: 
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm install
