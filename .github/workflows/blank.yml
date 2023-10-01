@@ -21,11 +21,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Check the vars
-        run: echo ${{ env.MSG }}
 
-      - name: Check the secrets
-        run: echo ${{ secrets.SAFE }}
+      - name: Print the env
+        run: echo ${{ toJson(env) }}
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
