@@ -15,18 +15,36 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  checkVars: 
+  checkVarsDev: 
     runs-on: ubuntu-latest
     environment: dev
 
     steps:
       - uses: actions/checkout@v3
 
+      # automatically gets starred out when its printed
       - name: Check the secrets
         run: echo "${{ secrets.SAFE }}"
 
+      # Prints "Dev message"
       - name: Check the env
         run: echo "${{ vars.MSG }}"
+  
+  checkVarsProd: 
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # automatically gets starred out when its printed
+      - name: Check the secrets
+        run: echo "${{ secrets.SAFE }}"
+
+      # Prints "Prod message" 
+      - name: Check the env
+        run: echo "${{ vars.MSG }}"
+        
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
