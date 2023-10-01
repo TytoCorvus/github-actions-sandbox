@@ -23,7 +23,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Print the env
-        run: echo ${{ toJson(env) }}
+        run: echo "${{ env }}"
+
+      - name: Check the vars
+        run: echo "${{ env.MSG }}"
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
